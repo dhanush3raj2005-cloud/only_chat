@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Senior Login - StudentMate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box {
+      background: #161b22;
+      width: 380px;
+      padding: 40px 30px;
+      border-radius: 20px;
+      border: 1px solid #30363d;
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin: 12px 0;
+      border-radius: 12px;
+      border: 1px solid #30363d;
+      background: #0d1117;
+      color: #e6edf3;
+      font-size: 14px;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    input:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 10px rgba(139,92,246,0.3);
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #8b5cf6, #58a6ff);
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(139,92,246,0.3);
+    }
+
+    .back {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #8b949e;
+      cursor: pointer;
+    }
+
+    .back:hover {
+      color: #8b5cf6;
+    }
+
+    @media (max-width: 480px) {
+      .box {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2>👨‍🎓 Senior Login</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <div class="back" onclick="location.href='index.html'">
+      ← Back to Home
+    </div>
+  </div>
+
+<script>
+const users = [
+  { username: "senior1", password: "1111", role: "Senior" },
+  { username: "senior2", password: "2222", role: "Senior" },
+  { username: "senior3", password: "3333", role: "Senior" }
+];
+
+function login() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+
+  const user = users.find(
+    u => u.username === username && u.password === password
+  );
+
+  if (user) {
+    localStorage.setItem("username", user.username);
+    localStorage.setItem("role", user.role);
+    window.location.href = "chat.html";
+  } else {
+    alert("Invalid username or password");
+  }
+}
+</script>
+
+</body>
+</html>
